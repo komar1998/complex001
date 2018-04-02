@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include <sstream>
 
@@ -10,8 +12,8 @@ struct complex_t
 
     complex_t()
     {
-        real = 0.0f;
-        imag = 0.0f;
+    	real=0.0f;
+    	imag=0.0f;
     }
 
     complex_t add( complex_t other ) const
@@ -45,53 +47,51 @@ struct complex_t
         result.imag = (imag * other.real - real * other.imag)/(other.real * other.real - other.imag * other.imag);
         return result;
     }
-
-    istream & read(istream & stream)
+	istream & read(istream & stream)
        {
            char op;
            return stream >> op >> real >> op >> imag >> op;
        }
 
-       ostream & write(ostream & stream ) const
-       {
-           return stream << "(" << real << "," << imag << ")";
-   }
+	ostream & write(ostream & stream ) const
+	{
+		return stream << "(" << real << "," << imag << ")";
+	}
 };
 int main()
 {
 	char op;
-complex_t a;
-complex_t b;
-cout<<"Enter the complex number:\n";
-if (a.read(std::cin) && b.read(std::cin))
-{
-	complex_t result;
-	cout<<"Enter operation:\n";
-	cin >> op;
-	switch (op)
+	complex_t a;
+	complex_t b;
+	cout<<"Enter the complex number:\n";
+	if (a.read(std::cin) && b.read(std::cin))
 	{
-		case ('+'):
-		result = a.add(b);
-		result.write(cout);
-		break;
-		case ('-'):
-		result = a.sub(b);
-		result.write(cout);
-		break;
-		case ('*'):
-		 result = a.mult(b);
-		result.write(cout);
-		break;
-		case ('/'):
-		result = a.div(b);
-		result.write(cout);
-		break;
+		complex_t result;
+		cout<<"Enter operation:\n";
+		cin >> op;
+		switch (op)
+		{
+			case ('+'):
+				result = a.add(b);
+				result.write(cout);
+				break;
+			case ('-'):
+				result = a.sub(b);
+				result.write(cout);
+				break;
+			case ('*'):
+				result = a.mult(b);
+				result.write(cout);
+				break;
+			case ('/'):
+				result = a.div(b);
+				result.write(cout);
+				break;
+		}
 	}
-}
-else
+	else
 	{
 		cout << "error";
 }
 return 0;
 }
-
